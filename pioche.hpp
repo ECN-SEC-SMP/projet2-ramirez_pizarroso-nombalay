@@ -13,10 +13,13 @@ private:
 public:
     //constructeur
     Pioche();
+
+    vector<Carte> getPioche();
     //méthodes
     Carte piocher();                //renvoie une carte piochée par un joueur
     void defausse(Carte c);        //un joueur défausse une carte et la rajoute dans la pioche
     void melanger();         //mélange aléatoirement la pioche à l'initialisation de la partie
+    friend std::ostream& operator<< (std::ostream &, Pioche &);
 };
 
 #endif

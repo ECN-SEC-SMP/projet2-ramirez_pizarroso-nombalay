@@ -97,3 +97,16 @@ void Pioche::melanger(){
     }
     this->pioche = pioche_bis;
 }
+
+vector<Carte> Pioche::getPioche(){
+    return this->pioche;
+}
+
+std::ostream& operator<<(std::ostream &o, Pioche &p){
+    vector<Carte> cartes = p.getPioche();
+
+    for(vector<Carte>::iterator it = cartes.begin(); it != cartes.end(); it++){
+        o << "Couleur carte : " << it->getCouleur() << ", ID action carte: " << it->getAction() << endl;
+    }
+  return o;
+}
