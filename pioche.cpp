@@ -108,5 +108,6 @@ std::ostream& operator<<(std::ostream &o, Pioche &p){
     for(vector<Carte>::iterator it = cartes.begin(); it != cartes.end(); it++){
         o << "Couleur carte : " << it->getCouleur() << ", ID action carte: " << it->getAction() << endl;
     }
-  return o;
+    o << "Taille pioche: " << cartes.size() << endl;
+    return o;
 }

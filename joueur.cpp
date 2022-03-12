@@ -7,11 +7,15 @@ Joueur::Joueur(string couleur){
   this->couleurTortue = couleur;
 }
 
-void Joueur::addCartes(Carte c){
+string Joueur::getCouleurTortue(){
+  return this->couleurTortue;
+}
+
+void Joueur::ajoutCarte(Carte c){
   main.push_back(c);
 }
 
-Carte Joueur::removeCartes(Carte c){
+Carte Joueur::retraitCarte(Carte c){
   return c;
 }
 
