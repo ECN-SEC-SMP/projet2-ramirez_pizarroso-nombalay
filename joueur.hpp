@@ -3,8 +3,12 @@
 
 #include <iostream>
 #include <vector>
+#include <unistd.h>
+
 #include "carte.hpp"
 using namespace std;
+
+#define NB_CARTE_JOUEUR    5  
 
 /***********************************************************
 Classe Joueur:
@@ -17,22 +21,26 @@ Méthodes:   - void ajoutCarte(Carte c): ajoute une carte à la main du joueur
             - Carte retraitCarte() : renvoie une carte que le joueur souhaite défausser
             - string getCouleurTortue() : retourne la couleur de la tortue du joueur
             - vector<int> getCarte() : retourne la main du joueur
+            - void afficherCarte() : affiche la main du joueur
 ***********************************************************/
 
 class Joueur{
 private:
-  string couleurTortue;
-  vector<Carte> main;
+    string couleurTortue;
+    vector<Carte> main;
 public:
-  //constructeurs
-  Joueur();
-  Joueur(string couleur);
-  //méthodes
-  void ajoutCarte(Carte c);
-  Carte retraitCarte(Carte c);
-  //accesseurs
-  string getCouleurTortue();
-  vector<Carte> getCarte();
+    //constructeurs
+    Joueur();
+    Joueur(string couleur);
+    //méthodes
+    void ajoutCarte(Carte c);
+    Carte retraitCarte(Carte c);
+    //accesseurs
+    string getCouleurTortue();
+    vector<Carte> getCarte();
+    void afficherCarte();
+    //méthode statique
+    static vector<string> initCouleur(vector<string> couleur);
 };
 
 #endif

@@ -6,12 +6,11 @@
 #include "joueur.hpp"
 using namespace std;
 
-class joueurIA : public joueur {
+class JoueurIA : public Joueur {
 public:
     //constructeurs
-    joueurIA();
+    JoueurIA(string couleur);
     //methode
-
 private:
 };
 #endif

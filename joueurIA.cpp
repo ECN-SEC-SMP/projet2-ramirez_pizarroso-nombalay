@@ -1,5 +1,5 @@
-/*#include "joueurIA.hpp"
+#include "joueurIA.hpp"
 
-joueurIA::joueurIA(string couleur):joueur(string couleur) 
+JoueurIA::JoueurIA(string couleur):Joueur(couleur) 
 {
-}*/
+}
