@@ -116,7 +116,7 @@ int main() {
         for (int i = 0; i < NBR_JOUEUR_TOTAL; i++ ) {
             if (win == true) continue;
             sleep(1);
-            cout << endl << "[ TOUR N°" << nb_tour << "]" << endl;
+            cout << endl << "[ TOUR N°" << nb_tour << " ]" << endl;
             cout << endl << "LES AUTRES JOUEUR NE DOIVENT PAS REGARDER !" << endl;
             cout << endl << "JOUEUR " << i+1 << ", C'EST A TON TOUR !" << endl;
             sleep(2);

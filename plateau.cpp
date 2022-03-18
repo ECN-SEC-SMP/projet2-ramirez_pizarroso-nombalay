@@ -13,7 +13,7 @@ Plateau::Plateau(){
 
 void Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
   int col = colonne;
-  int nbTortuesEmpilees = 1;    //1 par défaut car forcément 1 tortue à bouger au minimum
+  int nbTortuesEmpilees = 0;    //1 par défaut car forcément 1 tortue à bouger au minimum
   string couleur_tempo;
 
   if(ligne == 0 && mouvement < 0){
@@ -84,14 +84,17 @@ bool Plateau::gestion(Carte c, Joueur j){
   if(couleur != "N"){
     if(action==1){      //la couleur concernée avance de 2 cases
       this->rechercherTortue(couleur, &ligne, &colonne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, colonne, 2);
     }
     else if(action==2){    //la couleur concernée avance de 1 case
       this->rechercherTortue(couleur, &ligne, &colonne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, colonne, 1);
     }
     else if(action==3){    //la couleur concernée recule de 1 case
       this->rechercherTortue(couleur, &ligne, &colonne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       //rajouter un test pour savoir si case départ ?
       this->changerPositionTortue(ligne, colonne, -1);
     }else{
@@ -101,20 +104,24 @@ bool Plateau::gestion(Carte c, Joueur j){
   else{
     if(action==4){    //la dernière tortue avance de 2 cases
       this->rechercherDerniereTortue(&ligne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, 0, 2);
     }
     else if(action==5){    //la dernière tortue avance de 1 case
       this->rechercherDerniereTortue(&ligne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, 0, 1);
     }
     else if(action==6){    //la tortue de la couleur choisie par le joueur avance de 1 case
       couleur = c.getChoixCouleur();
       this->rechercherTortue(couleur, &ligne, &colonne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, colonne, 1);
     }
     else if(action==7){     //la tortue de la couleur du joueur recule de 1 case
       couleur = j.getCouleurTortue();
       this->rechercherTortue(couleur, &ligne, &colonne);
+      cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       this->changerPositionTortue(ligne, colonne, -1);
     }else{
       cout << "Erreur ID Action carte ou couleur carte." << endl;
