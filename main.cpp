@@ -154,6 +154,22 @@ int main() {
         cout << endl << "TOUR SUIVANT" << endl;
     }
     cout << endl << "FIN DE PARTIE" << endl;
-    cout << endl << "VICTOIRE DU JOUEUR " << winner << "!!!" << endl;
+    cout << endl << "VICTOIRE DE LA TORTUE " << winner << "!!!" << endl;
     return 0;
 }
+
+
+/* Reste à faire IA: 
+    - faire appel au constructeur de joueur IA au lieu de joueur si joueur de type IA
+    - faire une méthode virtuelle pure joueur de joueur (Si joueur est humain -> appel la méthode qui choisit la carte? si joueur IA -> méthode qui joue a carte avec de l'intelligence
+ - classe joueur humain qui hériterait de joueur
+ - Ne pas montrer la couleur des joueurs IA au début
+)
+
+
+
+
+
+
+
+*/

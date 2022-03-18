@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include "carte.hpp"
 #include "plateau.hpp"
@@ -31,6 +32,9 @@ bool Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
     if(ligne + mouvement > 9){
       win = true;
       mouvement --;
+    }
+    else if(ligne + mouvement == 9){
+      win = true;
     }
     
     //regarde si des tortues sont déjà présentes sur la case de déplacement, si oui récupère l'index pour la colonne

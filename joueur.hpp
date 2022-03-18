@@ -22,7 +22,8 @@ Méthodes:   - void ajoutCarte(Carte c): ajoute une carte à la main du joueur
             - string getCouleurTortue() : retourne la couleur de la tortue du joueur
             - vector<int> getCarte() : retourne la main du joueur
             - void afficherCarte() : affiche la main du joueur
-            - static vector<string> initCouleur(vector<string> couleur) : .....
+            - static vector<string> initCouleur(vector<string> couleur) : randomise la couleur des joueurs au début de la partie
+            - static string getVraiCouleur(string couleur) : retourne la couleur anglaise en couleur française
 ***********************************************************/
 
 class Joueur{
