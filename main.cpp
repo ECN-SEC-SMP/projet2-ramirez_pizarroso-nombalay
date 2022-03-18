@@ -24,7 +24,7 @@ int main() {
     int nb_tour = 0;
     int choixJoueur = 0;
     vector<string> couleur;
-    int winner;
+    string winner;
     /************
     Création des joueurs et attribution à chacun d'une couleur
     (red, blue, purple, yellow, green)
@@ -90,7 +90,8 @@ int main() {
     sleep (2);
     Clear();
     for (int i = 0; i< NBR_JOUEUR_TOTAL; i++) {
-        cout << endl << "JOUEUR " << i+1 << " | COULEUR: " << listejoueur[i].getCouleurTortue() << endl;
+        cout << endl << "JOUEUR " << i+1 << " | COULEUR: " <<         
+        Joueur::getVraiCouleur(listejoueur[i].getCouleurTortue()) << endl;
         sleep(2);
         Clear();
     }
@@ -134,7 +135,7 @@ int main() {
             //On joue la carte choisie
             if (jeu.gestion(c, listejoueur[i]) == true) {
                 win = true;
-                winner = i;
+                winner = jeu.getWinner();
             }
             //defausser la carte
             listejoueur[i].retraitCarte(c);
@@ -153,6 +154,6 @@ int main() {
         cout << endl << "TOUR SUIVANT" << endl;
     }
     cout << endl << "FIN DE PARTIE" << endl;
-    cout << endl << "VICTOIRE DU JOUEUR " << winner + 1 << "!!!" << endl;
+    cout << endl << "VICTOIRE DU JOUEUR " << winner << "!!!" << endl;
     return 0;
 }

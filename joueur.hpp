@@ -42,6 +42,7 @@ public:
     void afficherCarte();
     //méthode statique
     static vector<string> initCouleur(vector<string> couleur);
+    static string getVraiCouleur(string couleur);
 };
 
 #endif

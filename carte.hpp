@@ -8,7 +8,7 @@ using namespace std;
 /***********************************************************
 Classe Carte:
 Description: regroupe tous les attributs de chaque carte du jeu
-Attributs: Une variable de type string couleur, correspond à la couleur de la carte (r, y, g, p, g, n)
+Attributs: Une variable de type string couleur, correspond à la couleur de la carte (r, y, g, p, b, n)
            Une variable de type entier action, correspond à l'ID de l'action à effectuer
            Variable de type string choixCouleur, correspond à la couleur que le joueur choisi si la carte est neutre
 Constructeur: Un constructeur vide, constructeur par défaut

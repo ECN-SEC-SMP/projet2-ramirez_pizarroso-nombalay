@@ -16,20 +16,22 @@ Méthodes:   - bool gestion(Carte c, Joueur j): effectue l'action de la carte jo
             - bool changerPositionTortue(int ligne, int colonne, int mouvement) : change de position dans le tableau une tortue, renvoie true si une tortue arrive à la fin
             - void rechercherTortue(string couleur, int * ligne, int * colonne) : recherche dans le tableau une tortue en fonction de sa couleur
             - void rechercherDerniereTortue(int * ligne) : recherche la derniere tortue en course
+            - string getWinner() : retourne le ou les gagnants de la partie en fonction des tortues arrivées
 ***********************************************************/
 
 class Plateau{
 private:
   string plateauJeu[10][5];
 public:
-  //constructeur
-  Plateau();
-  //méthodes
-  bool gestion(Carte c, Joueur j);
-  void affichePlateau();
-  bool changerPositionTortue(int ligne, int colonne, int mouvement);
-  void rechercherTortue(string couleur, int * ligne, int * colonne);
-  void rechercherDerniereTortue(int * ligne);
+    //constructeur
+    Plateau();
+    //méthodes
+    bool gestion(Carte c, Joueur j);
+    void affichePlateau();
+    bool changerPositionTortue(int ligne, int colonne, int mouvement);
+    void rechercherTortue(string couleur, int * ligne, int * colonne);
+    void rechercherDerniereTortue(int * ligne);
+    string getWinner();
 };
 
 #endif

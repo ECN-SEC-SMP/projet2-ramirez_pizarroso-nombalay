@@ -15,6 +15,7 @@ bool Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
   int col = colonne;
   int nbTortuesEmpilees = 0;    //1 par défaut car forcément 1 tortue à bouger au minimum
   string couleur_tempo;
+  bool win = false;
 
   if(ligne == 0 && mouvement < 0){
     cout << "Vous avez essayé de vous déplacer vers l'arrière alors que vous êtes case départ." << endl;
@@ -26,8 +27,10 @@ bool Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
       col++;
     }
 
-    if(ligne + mouvement >= 9){
-      return true;
+    //regarde si une tortue gagne le jeu
+    if(ligne + mouvement > 9){
+      win = true;
+      mouvement --;
     }
     
     //regarde si des tortues sont déjà présentes sur la case de déplacement, si oui récupère l'index pour la colonne
@@ -52,7 +55,7 @@ bool Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
       }
     }
   }
-  return false;
+  return win;
 }
 
 void Plateau::rechercherTortue(string couleur, int * ligne, int * colonne){
@@ -150,4 +153,15 @@ void Plateau::affichePlateau(){
     }
     cout << endl;
   }
+}
+
+string Plateau::getWinner() 
+{
+    string couleur;
+    
+    for (int i = 0; i < 5; i++) {
+        if(plateauJeu[9][i] != "")
+            couleur = plateauJeu[9][i];
+            return Joueur::getVraiCouleur(couleur);
+    }
 }

@@ -47,12 +47,7 @@ void Joueur::afficherCarte()
         if (action == 5) action_reelle = "=>";
         if (action == 6) action_reelle = "+";
         if (action == 7) action_reelle = "-";
-        if (couleur == "N") couleur_reelle = "NEUTRE";
-        if (couleur == "Y") couleur_reelle = "JAUNE";
-        if (couleur == "R") couleur_reelle = "ROUGE";
-        if (couleur == "B") couleur_reelle = "BLEU";
-        if (couleur == "G") couleur_reelle = "VERT";
-        if (couleur == "P") couleur_reelle = "VIOLET";
+        couleur_reelle = Joueur::getVraiCouleur(couleur);
         cout << endl << "CARTE: " << i+1 << " | COULEUR: " << couleur_reelle <<
         " | ACTION: " << action_reelle << endl;
     }
@@ -77,4 +72,17 @@ vector<string> Joueur::initCouleur(vector<string> couleur)
     } 
     couleur = melange_couleur;
     return couleur;
+}
+
+string Joueur::getVraiCouleur(string couleur) 
+{
+    string couleur_reelle;
+    
+    if (couleur == "N") couleur_reelle = "NEUTRE";
+    if (couleur == "Y") couleur_reelle = "JAUNE";
+    if (couleur == "R") couleur_reelle = "ROUGE";
+    if (couleur == "B") couleur_reelle = "BLEU";
+    if (couleur == "G") couleur_reelle = "VERT";
+    if (couleur == "P") couleur_reelle = "VIOLET";
+    return couleur_reelle;
 }
