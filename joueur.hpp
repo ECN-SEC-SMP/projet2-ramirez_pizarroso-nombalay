@@ -22,6 +22,7 @@ Méthodes:   - void ajoutCarte(Carte c): ajoute une carte à la main du joueur
             - string getCouleurTortue() : retourne la couleur de la tortue du joueur
             - vector<int> getCarte() : retourne la main du joueur
             - void afficherCarte() : affiche la main du joueur
+            - static vector<string> initCouleur(vector<string> couleur) : .....
 ***********************************************************/
 
 class Joueur{

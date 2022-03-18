@@ -133,9 +133,8 @@ int main() {
             c = listejoueur[i].getCarte()[choixJoueur - 1]; 
             //On joue la carte choisie
             if (jeu.gestion(c, listejoueur[i]) == true) {
-                // FONCTION GESTION PAS FINI, LAISSER CE CODE COMMENTE 
-                //win = true;
-                //winner = i;
+                win = true;
+                winner = i;
             }
             //defausser la carte
             listejoueur[i].retraitCarte(c);
@@ -157,5 +156,3 @@ int main() {
     cout << endl << "VICTOIRE DU JOUEUR " << winner + 1 << "!!!" << endl;
     return 0;
 }
-
-

@@ -6,11 +6,21 @@
 #include "joueur.hpp"
 using namespace std;
 
+/***********************************************************
+Classe JoueurIA:
+Description: Un objet pour chaque joueurIA de la partie, cette classe hérite de la classe Joueur
+Attributs: 
+Constructeur: Un constructeur vide, constructeur par défaut
+              Un constructeur avec en paramètre la couleur du joueurIA
+Méthodes:   - toutes les méthodes de la classe Joueur puisque JoueurIA hérite de Joueur
+***********************************************************/
+
 class JoueurIA : public Joueur {
-public:
-    //constructeurs
-    JoueurIA(string couleur);
-    //methode
 private:
+public:
+  //constructeurs
+  JoueurIA();
+  JoueurIA(string couleur);
 };
+
 #endif
