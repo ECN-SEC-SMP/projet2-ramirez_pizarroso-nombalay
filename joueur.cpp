@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "joueur.hpp"
 
 Joueur::Joueur()
@@ -16,8 +17,12 @@ void Joueur::ajoutCarte(Carte c){
     main.push_back(c);
 }
 
-Carte Joueur::retraitCarte(Carte c){
-    return c;
+void Joueur::retraitCarte(Carte c){
+  for(int i = 0; i < this->main.size(); i++){
+    if(this->main[i] == c){
+      this->main.erase(this->main.begin()+i);
+    }
+  }
 }
 
 vector<Carte> Joueur::getCarte(){
@@ -53,6 +58,72 @@ void Joueur::afficherCarte()
     }
 }
 
+void Joueur::setType(string type)
+{
+    if(type == "humain" || type == "IA") {
+        this->type = type;
+    } else {
+        cout << "mauvais type" << endl;   
+    }
+}
+
+string Joueur::getType()
+{
+    return this->type;
+}
+
+Carte Joueur::jouerCarte(int position)
+{
+    int choixJoueur = 0;
+    
+    if (this->getType() == "humain") {
+        cin >> choixJoueur;
+        while (choixJoueur < 1 || choixJoueur > NB_CARTE_JOUEUR) {
+            cout << endl << "Tu dois choisir un chiffre entre 1 et 5 !" << endl;
+            cout << endl << "Quelle carte comptes tu jouer ?" << endl;
+            cin >> choixJoueur;
+            return this->getCarte()[choixJoueur - 1];
+        }
+        return this->getCarte()[choixJoueur - 1];
+    } else if (this->getType() == "IA") {
+        sleep(1);
+        //Gestion de l'intelligence IA
+        // On check d'abord si la tortue gérée par l'IA
+        //est dans les deux dernières cases avant l'arrivée
+        if (position == 7 || position == 8){
+            //On check si il a une carte de sa couleur
+            for(int i = 0; i<NB_CARTE_JOUEUR; i++) {
+                if (this->getCarte()[i].getCouleur() == this->getCouleurTortue()) {
+                    //Si on trouve une carte de cette couleur, alors on la joue
+                    return this->getCarte()[i];
+                }
+            }
+            for(int i = 0; i<NB_CARTE_JOUEUR; i++) {  
+                //Sinon on check si il possède une carte neutre qui fait avancer                    les tortues
+                if (this->getCarte()[i].getCouleur() == "N") {
+                    if(this->getCarte()[i].getAction() == 6) {
+                        return this->getCarte()[i];
+                    } 
+                }
+            }
+            //sinon on randomise sur sa main
+            choixJoueur = rand() % NB_CARTE_JOUEUR;
+            return this->getCarte()[choixJoueur];
+        //Si le joueur IA n'est pas dans les deux dernières cases avant la fin
+        } else {
+            //Il regarde si il a une carte de sa couleur et il joue
+            for(int i = 0; i<NB_CARTE_JOUEUR; i++) {
+                if (this->getCarte()[i].getCouleur() == this->getCouleurTortue()) {
+                    //Si on trouve une carte de cette couleur, alors on la joue
+                    return this->getCarte()[i];
+                }
+            }
+            //sinon on randomise sur sa main
+            choixJoueur = rand() % NB_CARTE_JOUEUR;
+            return this->getCarte()[choixJoueur];
+        }
+    }
+}
 
 vector<string> Joueur::initCouleur(vector<string> couleur)
 {
@@ -86,3 +157,4 @@ string Joueur::getVraiCouleur(string couleur)
     if (couleur == "P") couleur_reelle = "VIOLET";
     return couleur_reelle;
 }
+

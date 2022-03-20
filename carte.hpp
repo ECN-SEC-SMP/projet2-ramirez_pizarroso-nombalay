@@ -15,7 +15,7 @@ Constructeur: Un constructeur vide, constructeur par défaut
               Un constructeur avec en paramètres la couleur de la carte (neutre compris) et l'id de l'action de la carte
 Méthodes:   - string getCouleur(): retourne la couleur de la carte
             - int getAction() : retourne l'ID de l'action à effectuer
-            - string getChoixCouleur() : retourne le choix de la couleur effectué par le joueur si la carte est neutre
+            - string getChoixCouleur(string type, string couleurJoueur) : retourne le choix de la couleur effectué par le joueur ou l'IA si la carte est neutre
             - void setChoixCouleur() : défini la couleur de la carte que le joueur choisi si la carte est neutre
 ***********************************************************/
 
@@ -31,9 +31,10 @@ public:
   //accesseurs
   string getCouleur();
   int getAction();
-  string getChoixCouleur();
+  string getChoixCouleur(string type, string couleurJoueur);
   //mutateurs
   void setChoixCouleur(string couleur);
+  friend bool operator== (Carte &, Carte &);
 };
 
 #endif

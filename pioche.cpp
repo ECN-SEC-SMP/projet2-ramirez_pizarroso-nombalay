@@ -74,10 +74,6 @@ Pioche::Pioche(){
     this->pioche.push_back(Carte("N", 7));
 }
 
-
-// SENS DU PIOCHAGE ET DEFAUSSAGE ?
-
-
 Carte Pioche::piocher(){
     Carte c = this->pioche.front();
     this->pioche.erase(pioche.begin());

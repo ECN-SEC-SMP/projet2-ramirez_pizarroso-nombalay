@@ -25,6 +25,8 @@ int main() {
     int choixJoueur = 0;
     vector<string> couleur;
     string winner;
+    int posLigne;
+    int posColonne;
     /************
     Création des joueurs et attribution à chacun d'une couleur
     (red, blue, purple, yellow, green)
@@ -52,7 +54,7 @@ int main() {
     si il n'y a pas 5 joueurs réels on complète par des IAs.
     ***************/
     while ((nb_joueur < 1) || (nb_joueur > NBR_JOUEUR_TOTAL)) {
-        cout << endl << "Veuillez saisir le nombre de joueur:  " << endl;
+        cout << endl << "Veuillez saisir le nombre de joueurs:  " << endl;
         cin >> nb_joueur;
         if (nb_joueur > NBR_JOUEUR_TOTAL) {
             cout << endl << "Veuillez rentrer un nombre de joueur inférieur à 6" << endl;
@@ -83,13 +85,23 @@ int main() {
     listejoueur.push_back(player4);
     listejoueur.push_back(player5);
     /************
+    Attribution du type IA ou humain en fonnction
+    de la configuration de la partie décidée par les joueurs
+    ************/
+    for (int i = 0; i < nb_joueur; i++) {
+        listejoueur[i].setType("humain");
+    }
+    for (int i = nb_joueur; i < NBR_JOUEUR_TOTAL; i++) {
+        listejoueur[i].setType("IA");
+    }
+    /************
     Annonce à chaque joueur de sa couleur
     ************/
     cout << endl << "Annonce des couleurs, chaque joueur regarde sa couleur" << endl;
     cout << endl << "NE PAS REGARDER CELLE DES AUTRES !" << endl;
     sleep (2);
     Clear();
-    for (int i = 0; i< NBR_JOUEUR_TOTAL; i++) {
+    for (int i = 0; i< nb_joueur; i++) {
         cout << endl << "JOUEUR " << i+1 << " | COULEUR: " <<         
         Joueur::getVraiCouleur(listejoueur[i].getCouleurTortue()) << endl;
         sleep(2);
@@ -121,17 +133,16 @@ int main() {
             cout << endl << "LES AUTRES JOUEUR NE DOIVENT PAS REGARDER !" << endl;
             cout << endl << "JOUEUR " << i+1 << ", C'EST A TON TOUR !" << endl;
             sleep(2);
-            cout << endl << "Tu as les cartes suivantes: " << endl;                         
-            listejoueur[i].afficherCarte();
-            cout << endl << "Quelle carte comptes tu jouer ?" << endl;
-            cin >> choixJoueur;
-            while (choixJoueur < 1 || choixJoueur > NB_CARTE_JOUEUR) {
-                cout << endl << "Tu dois choisir un chiffre entre 1 et 5 !" << endl;
-                cin >> choixJoueur;
+            if (listejoueur[i].getType() == "humain") {
+                // on affiche ses cartes au joueur si il est humain
+                cout << endl << "Tu as les cartes suivantes: " << endl;                         
+                listejoueur[i].afficherCarte();
+                cout << endl << "Quelle carte comptes tu jouer ?" << endl;
             }
+            // on recherce la position de la tortue(gestion de l'IA)
+            jeu.rechercherTortue(listejoueur[i].getCouleurTortue(), &posLigne, &posColonne);
+            c = listejoueur[i].jouerCarte(posLigne);
             Clear();
-            // on stock la carte jouée
-            c = listejoueur[i].getCarte()[choixJoueur - 1]; 
             //On joue la carte choisie
             if (jeu.gestion(c, listejoueur[i]) == true) {
                 win = true;
@@ -157,19 +168,3 @@ int main() {
     cout << endl << "VICTOIRE DE LA TORTUE " << winner << "!!!" << endl;
     return 0;
 }
-
-
-/* Reste à faire IA: 
-    - faire appel au constructeur de joueur IA au lieu de joueur si joueur de type IA
-    - faire une méthode virtuelle pure joueur de joueur (Si joueur est humain -> appel la méthode qui choisit la carte? si joueur IA -> méthode qui joue a carte avec de l'intelligence
- - classe joueur humain qui hériterait de joueur
- - Ne pas montrer la couleur des joueurs IA au début
-)
-
-
-
-
-
-
-
-*/

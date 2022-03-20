@@ -48,8 +48,6 @@ bool Plateau::changerPositionTortue(int ligne, int colonne, int mouvement){
     }
     
     //déplace la ou les tortues
-    cout << "Nombre tortues empilées: " << nbTortuesEmpilees << endl;
-    cout << "Colonne de mouvement: " << colonneMouvement << endl;
     if((nbTortuesEmpilees + colonneMouvement) > 5)
       cout << "erreur fonction changement position" << endl;
     else{
@@ -84,12 +82,12 @@ void Plateau::rechercherDerniereTortue(int * ligne){
 }
 
 bool Plateau::gestion(Carte c, Joueur j){
-  int action=c.getAction();  
-  string couleur=c.getCouleur();
-  int ligne = 0;
-  int colonne = 0;
-  
-  if(couleur != "N"){
+    int action=c.getAction();  
+    string couleur=c.getCouleur();
+    int ligne = 0;
+    int colonne = 0;
+    
+    if(couleur != "N"){
     if(action==1){      //la couleur concernée avance de 2 cases
       this->rechercherTortue(couleur, &ligne, &colonne);
       //cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
@@ -112,8 +110,8 @@ bool Plateau::gestion(Carte c, Joueur j){
       cout << "Erreur ID Action carte ou couleur carte." << endl;
       return false;
     }
-  }
-  else{
+    }
+    else{
     if(action==4){    //la dernière tortue avance de 2 cases
       this->rechercherDerniereTortue(&ligne);
       //cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
@@ -126,15 +124,15 @@ bool Plateau::gestion(Carte c, Joueur j){
       if(this->changerPositionTortue(ligne, 0, 1)){return true;}
       else{return false;}
     }
-    else if(action==6){    //la tortue de la couleur choisie par le joueur avance de 1 case
-      couleur = c.getChoixCouleur();
+    else if(action==6){    //la tortue de la couleur choisie par le joueur avance de 1 case   
+      couleur = c.getChoixCouleur(j.getType(), j.getCouleurTortue());
       this->rechercherTortue(couleur, &ligne, &colonne);
       //cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       if(this->changerPositionTortue(ligne, colonne, 1)){return true;}
       else{return false;}
     }
     else if(action==7){     //la tortue de la couleur du joueur recule de 1 case
-      couleur = c.getChoixCouleur();
+      couleur = c.getChoixCouleur(j.getType(), j.getCouleurTortue());
       this->rechercherTortue(couleur, &ligne, &colonne);
       //cout << "ligne:" << ligne << "; colonne: " << colonne << endl;
       if(this->changerPositionTortue(ligne, colonne, -1)){return true;}
@@ -143,7 +141,7 @@ bool Plateau::gestion(Carte c, Joueur j){
       cout << "Erreur ID Action carte ou couleur carte." << endl;
       return false;
     }
-  }
+    }
 
 }
 
